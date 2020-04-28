@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Тег form </title>
+</head>
+<body>
+    <h1> форма отзыва </h1>
+    <form method="post" enctype="multipart/form-data" action="/form/">
+        {% csrf_token %}
+        <p>{{form}}</p>
+
+        <p><input id  = "feedback-submit" type = "submit" value="OK" ></p>
+    </form>
+</body>
+</html>
+
+
