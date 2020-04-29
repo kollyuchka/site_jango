@@ -8,3 +8,5 @@ stop:
 
 down:
 	docker-compose down
+
+rebuild: down build start
