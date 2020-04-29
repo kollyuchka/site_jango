@@ -1,4 +1,5 @@
 from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views import View
 from .forms import Form_one
@@ -7,10 +8,12 @@ import os
 
 
 class FormsView(View):
+
     def get(self,request):
         form = Form_one()
 
         return render(request,'form.html',{'form':form})
+
 
     def post(self,request):
         form = Form_one(request.POST,request.FILES)
@@ -34,7 +37,9 @@ class FormsView(View):
             os.replace(filename_3, "file_storage/file_3")
             os.replace(filename_4, "file_storage/file_4")
 
-            # return render(request,'form.html',context)
+
+
             return HttpResponseRedirect('/form/')
+
         else:
             return render(request,'error.html',{"error":form.errors})
