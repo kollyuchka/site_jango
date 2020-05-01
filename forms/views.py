@@ -8,7 +8,7 @@ from django.core.files.storage import FileSystemStorage
 import os
 
 
-class FormsView( View):
+class FormsView(View):
 
     def get(self,request):
         form = Form_one()
