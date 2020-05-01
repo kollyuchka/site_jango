@@ -7,10 +7,8 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 import os
 
-os.environ['STACK_HEIGT'] = '0'
-# storage = {'STACK_HEIGT':0}
+
 class FormsView( View):
-    # self.storage = {'STACK_HEIGT':0}
 
     def get(self,request):
         form = Form_one()
