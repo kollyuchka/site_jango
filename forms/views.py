@@ -3,11 +3,14 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views import View
 from .forms import Form_one
+from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 import os
 
-
-class FormsView(View):
+os.environ['STACK_HEIGT'] = '0'
+# storage = {'STACK_HEIGT':0}
+class FormsView( View):
+    # self.storage = {'STACK_HEIGT':0}
 
     def get(self,request):
         form = Form_one()
@@ -38,11 +41,16 @@ class FormsView(View):
             os.replace(filename_4, "file_storage/file_4")
 
 
+            storage = {}
+            storage['STACK_HEIGT']= form.cleaned_data['stack_height']
+            storage['BOTTOM_SOLID_LAYER'] = form.cleaned_data['botton_solid_layer']
+            storage['TOP_SOLID_LAYER']= form.cleaned_data['top_solid_layer']
+            storage['TOP_RAFT_LAYER']=form.cleaned_data['top_raft_layer']
+            storage['TOP_BRIDGE_LAYER']= form.cleaned_data['top_bridge_layer']
 
-            stack_height = form.cleaned_data['stack_height']
-            cmd = "sh ./rootfs/opt/makestack/makestack.sh stack_height"
-            os.system(cmd)
-
+            with open('file_storage/conf', 'w') as f:
+                for item in storage:
+                    f.write(item+'='+str(storage[item]) +'\n')
 
             return HttpResponseRedirect('/form/')
 
