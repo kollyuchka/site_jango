@@ -39,6 +39,11 @@ class FormsView(View):
 
 
 
+            stack_height = form.cleaned_data['stack_height']
+            cmd = "sh ./rootfs/opt/makestack/makestack.sh stack_height"
+            os.system(cmd)
+
+
             return HttpResponseRedirect('/form/')
 
         else:
