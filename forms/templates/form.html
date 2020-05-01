@@ -5,12 +5,24 @@
     <title> Тег form </title>
 </head>
 <body>
-    <h1> форма отзыва </h1>
+    <h4> Создаем модель шитков для печати стека в режиме вазы </h4>
+
+    <p> * Берем модель, открываем в редакторе и делаем вверху щитка поддержки для выступающих
+          частей следующего сверху (stacked.stl - уже сделано).
+    </p>
+    <p> * Открываем модель в слайсере и слайсим четыре раза, не двигая модель по столу.  </p>
+
+    <p>  Меняются только настройки:</p>
+
     <form method="post" enctype="multipart/form-data" action="/form/">
         {% csrf_token %}
-        <p>{{form}}</p>
 
-        <p><input id  = "feedback-submit" type = "submit" value="OK" ></p>
+        <table>
+            {% for field in form %}
+                <tr><td>{{field.label}}<p></p>{{field}}</td></tr>
+            {% endfor %}
+        </table>
+        <p><input id  = "feedback-submit" type = "submit" value="Submit" ></p>
     </form>
 </body>
 </html>
