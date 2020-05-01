@@ -11,3 +11,4 @@ class Form_one(forms.Form):
     top_solid_layer = forms.FloatField(label = 'TOP_SOLID_LAYER',min_value = 10, max_value = 30, initial= 21.25)
     top_raft_layer = forms.FloatField(label = 'TOP_RAFT_LAYER',min_value = 0, max_value = 5, initial= 1.75)
     top_bridge_layer = forms.FloatField(label = 'TOP_BRIDGE_LAYER',min_value = 0, max_value = 5, initial=2.35)
+
